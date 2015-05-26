@@ -4,11 +4,15 @@ describe('triangle', function() {
   });
 
   it("is an equilateral triangle if all sides are equal", function() {
-    expect(triangle([3, 3, 3])).to.equal("equilateral triangle")
+    expect(triangle([3, 3, 3])).to.equal("an equilateral triangle")
   });
 
   it("is an isosceles triangle if 2 sides are equal", function() {
-    expect(triangle([1, 2, 2])).to.equal("isosceles triangle")
+    expect(triangle([1, 2, 2])).to.equal("an isosceles triangle")
   });
-  
+
+  it("is a scalene triangle if no sides are equal", function() {
+    expect(triangle([1, 2, 3])).to.equal("a scalene triangle")
+  });
+
 });
