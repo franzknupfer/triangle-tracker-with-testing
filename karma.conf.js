@@ -29,57 +29,40 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'js/*.js': [ 'browserify' ],
-      'spec/*.js': ['browserify']
+      'js/*.js': [ 'browserify', 'coverage'],
+      'spec/*.js': ['browserify'],
+      // 'js/*.js': ['coverage']
     },
     plugins: [
       'karma-jquery',
       'karma-browserify',
       'karma-chrome-launcher',
       'karma-jasmine',
-      'karma-jasmine-html-reporter'
+      'karma-jasmine-html-reporter',
+      'karma-coverage'
     ],
     browserify: {
       debug: true,
       transform: [ [ 'babelify', {presets: ["es2015"]} ] ]
     },
 
+    // This is for Istanbul.js.
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
 
 
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'kjhtml'],
-
-
-    // web server port
+    // Note: 'coverage' is for Istanbul. Probably won't end up in curriculum.
+    reporters: ['progress', 'kjhtml', 'coverage'],
     port: 9876,
-
-
-    // enable / disable colors in the output (reporters and logs)
     colors: true,
-
-
-    // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
-
-
-    // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
-
-    // start these browsers
-    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    // We can do other browsers as well, but Chrome is fine for curriculum.
     browsers: ['Chrome'],
-
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
     concurrency: Infinity
   })
 }
