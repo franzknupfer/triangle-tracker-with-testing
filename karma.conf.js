@@ -15,8 +15,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      // { pattern: 'js/jquery-1.11.3.js', included: true },
-      // 'build/js/app.js',
       'js/triangle-interface.js',
       'js/triangle.js',
       'spec/triangle_spec.js',
