@@ -1,6 +1,8 @@
 // Because import and export are ES6 syntax, we need to babelify and transpile ES6 to ES5.
 
-import { Triangle } from "./../js/triangle.js";
+var Triangle = require('./../js/triangle.js').triangleModule;
+// global.$ = require('jquery')(window);
+
 
 $(document).ready(function(event) {
   $("form#triangle").submit(function(event) {
