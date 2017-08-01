@@ -32,6 +32,8 @@ Note that we are just testing chrome with karma, but you can also install other 
 
 npm install -g karma-cli
 
+Also: npm install karma-cli --save-dev.
+
 We can configure karma with the command karma init. (More on karma init configuration here.)
 
 Next, let's point our tests at karma. In package.json, change the script for testing to the following:
@@ -66,8 +68,22 @@ Next, we'll need to specify which files need preprocessing. Since our JS files a
 
 We also need to specify the browserify configuration [ADD MORE HERE].
 
-At this point, we can run npm test and our tests will be run through karma. We can still use console.log and debugger to debug our code as well.
+At this point, we can run npm test and our tests will be run through karma. We can still use console.log and debugger to debug our code as well. We can continue to update our code while karma is running and it will automatically update our tests each time we save.
+
+While we can see basic information about our tests in the terminal and we can also inspect the console for errors, it would be nice to make our test results easier on the eyes. Let's add another module to take care of this for us:
+
+npm install karma-jasmine-html-reporter --save-dev
+
+Let's add this to our plugins in karma.conf.js: 'karma-jasmine-html-reporter'
+
+And also to our reporters: reporters: ['progress', 'kjhtml']
+
+Now when we run npm test, we can click on "Debug" and get the results of all our tests!
 
 SOMEWHERE IN LESSON, ADD BEST PRACTICES FOR INSTALLING NPM PACKAGES:
-1. Only when needed
-2.
+1. Only when needed.
+2. Check latest commits. How recent?
+3. Check number of downloads.
+4. If a package doesn't work, remove it from package.json.
+5. Be aware that modules can change regularly, break, etc.
+6. Check the package.json of other commonly used tools. For instance, most of the karma and jasmine modules we use are used in Angular.
